@@ -1,0 +1,17 @@
+{
+  "name": "typescript-jan-11",
+  "version": "1.0.0",
+  "description": "ES6 Typescript Async/Await",
+  "dependencies": {
+    "es6-shim": "^0.35.2"
+  },
+  "devDependencies": {
+    "@types/es6-shim": "^0.31.32"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "hasana@dev6.com",
+  "license": "ISC",
+  "repository": "none"
+}
