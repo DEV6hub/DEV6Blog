@@ -13,7 +13,7 @@
 
 2. If you don't have Angular CLI installed on your computer, 'npm install angular-cli'
 
-3. 'typings install'
+3. 'npm install -s'
 
 4. 'ng-serve' (port 4200)
 
