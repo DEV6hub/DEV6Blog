@@ -1,0 +1,1 @@
+<chat-component></chat-component>
