@@ -1,0 +1,6 @@
+<div class="left">
+
+  <input type="text" placeholder="Name" #name onfocus="this.value=''">
+
+  <button (click)="addTutorial(name.value, $event)">Add an Item</button>
+</div>
