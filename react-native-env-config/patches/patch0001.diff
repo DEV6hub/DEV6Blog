@@ -1,0 +1,78 @@
+From 25a480da6d5cbf4343c4c91b1b61a44113d8819a Mon Sep 17 00:00:00 2001
+From: Rod Nolan <rodn@dev6.com>
+Date: Wed, 22 May 2019 10:16:00 -0400
+Subject: [PATCH] add files to define environment variables for each target
+ envivronment
+
+---
+ .env.dev.js   | 14 ++++++++++++++
+ .env.prod.js  | 14 ++++++++++++++
+ .env.stage.js | 14 ++++++++++++++
+ 3 files changed, 42 insertions(+)
+ create mode 100644 .env.dev.js
+ create mode 100644 .env.prod.js
+ create mode 100644 .env.stage.js
+
+diff --git a/.env.dev.js b/.env.dev.js
+new file mode 100644
+index 0000000..c14623d
+--- /dev/null
++++ b/.env.dev.js
+@@ -0,0 +1,14 @@
++/**
++ * ./config/index.js is generated 
++ * to update configuration values, edit the appropriate file:
++ *    ./.env.dev
++ *    ./.env.stage
++ *    ./.env.prod
++ * and run the corresponding script
++ *    `yarn prep-dev` 
++ *    `yarn prep-stage` 
++ *    `yarn prep-prod` 
++ */
++module.exports = {
++  ENV_NAME: 'dev',
++};
+diff --git a/.env.prod.js b/.env.prod.js
+new file mode 100644
+index 0000000..a2c1798
+--- /dev/null
++++ b/.env.prod.js
+@@ -0,0 +1,14 @@
++/**
++ * ./config/index.js is generated 
++ * to update configuration values, edit the appropriate file:
++ *    ./.env.dev
++ *    ./.env.stage
++ *    ./.env.prod
++ * and run the corresponding script
++ *    `yarn prep-dev` 
++ *    `yarn prep-stage` 
++ *    `yarn prep-prod` 
++ */
++module.exports = {
++  ENV_NAME: 'production',
++};
+diff --git a/.env.stage.js b/.env.stage.js
+new file mode 100644
+index 0000000..965ed78
+--- /dev/null
++++ b/.env.stage.js
+@@ -0,0 +1,14 @@
++/**
++ * ./config/index.js is generated 
++ * to update configuration values, edit the appropriate file:
++ *    ./.env.dev
++ *    ./.env.stage
++ *    ./.env.prod
++ * and run the corresponding script
++ *    `yarn prep-dev` 
++ *    `yarn prep-stage` 
++ *    `yarn prep-prod` 
++ */
++module.exports = {
++  ENV_NAME: 'staging',
++};
+-- 
+2.18.0
+

@@ -1,0 +1,130 @@
+From 3f3e6571d7e33529d58213041ed8ce11e199dade Mon Sep 17 00:00:00 2001
+From: Rod Nolan <rodn@dev6.com>
+Date: Wed, 22 May 2019 10:16:00 -0400
+Subject: [PATCH] all changes in one commit
+
+---
+ .env.dev.js   | 14 ++++++++++++++
+ .env.prod.js  | 14 ++++++++++++++
+ .env.stage.js | 14 ++++++++++++++
+ .gitignore    |  3 +++
+ App.js        |  2 ++
+ package.json  |  8 +++++++-
+ 6 files changed, 54 insertions(+), 1 deletion(-)
+ create mode 100644 .env.dev.js
+ create mode 100644 .env.prod.js
+ create mode 100644 .env.stage.js
+
+diff --git a/.env.dev.js b/.env.dev.js
+new file mode 100644
+index 0000000..c14623d
+--- /dev/null
++++ b/.env.dev.js
+@@ -0,0 +1,14 @@
++/**
++ * ./config/index.js is generated 
++ * to update configuration values, edit the appropriate file:
++ *    ./.env.dev
++ *    ./.env.stage
++ *    ./.env.prod
++ * and run the corresponding script
++ *    `yarn prep-dev` 
++ *    `yarn prep-stage` 
++ *    `yarn prep-prod` 
++ */
++module.exports = {
++  ENV_NAME: 'dev',
++};
+diff --git a/.env.prod.js b/.env.prod.js
+new file mode 100644
+index 0000000..a2c1798
+--- /dev/null
++++ b/.env.prod.js
+@@ -0,0 +1,14 @@
++/**
++ * ./config/index.js is generated 
++ * to update configuration values, edit the appropriate file:
++ *    ./.env.dev
++ *    ./.env.stage
++ *    ./.env.prod
++ * and run the corresponding script
++ *    `yarn prep-dev` 
++ *    `yarn prep-stage` 
++ *    `yarn prep-prod` 
++ */
++module.exports = {
++  ENV_NAME: 'production',
++};
+diff --git a/.env.stage.js b/.env.stage.js
+new file mode 100644
+index 0000000..965ed78
+--- /dev/null
++++ b/.env.stage.js
+@@ -0,0 +1,14 @@
++/**
++ * ./config/index.js is generated 
++ * to update configuration values, edit the appropriate file:
++ *    ./.env.dev
++ *    ./.env.stage
++ *    ./.env.prod
++ * and run the corresponding script
++ *    `yarn prep-dev` 
++ *    `yarn prep-stage` 
++ *    `yarn prep-prod` 
++ */
++module.exports = {
++  ENV_NAME: 'staging',
++};
+diff --git a/.gitignore b/.gitignore
+index 0b9c303..1062392 100644
+--- a/.gitignore
++++ b/.gitignore
+@@ -55,3 +55,6 @@ buck-out/
+ # Bundle artifact
+ *.jsbundle
+ 
++
++# generated config files
++config/
+diff --git a/App.js b/App.js
+index 171d0f0..0b04b94 100644
+--- a/App.js
++++ b/App.js
+@@ -8,6 +8,7 @@
+ 
+ import React, {Component} from 'react';
+ import {Platform, StyleSheet, Text, View} from 'react-native';
++import env from './config/env';
+ 
+ const instructions = Platform.select({
+   ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
+@@ -24,6 +25,7 @@ export default class App extends Component<Props> {
+         <Text style={styles.welcome}>Welcome to React Native!</Text>
+         <Text style={styles.instructions}>To get started, edit App.js</Text>
+         <Text style={styles.instructions}>{instructions}</Text>
++        <Text style={styles.instructions}>Built for {env.ENV_NAME}</Text>
+       </View>
+     );
+   }
+diff --git a/package.json b/package.json
+index 332f0fb..697afff 100644
+--- a/package.json
++++ b/package.json
+@@ -4,7 +4,13 @@
+   "private": true,
+   "scripts": {
+     "start": "node node_modules/react-native/local-cli/cli.js start",
+-    "test": "jest"
++    "test": "jest",
++    "prep-dev": "echo \"Applying configuration values for the development environment\" && cp .env.dev.js config/env.js",
++    "prep-stage": "echo \"Applying configuration values for the staging environment\" && cp .env.stage.js config/env.js",
++    "prep-prod": "echo \"Applying configuration values for the production environment\" && cp .env.prod.js config/env.js",
++    "test-dev": "yarn prep-dev && yarn start",
++    "test-stage": "yarn prep-stage && yarn start",
++    "test-prod": "yarn prep-prod && yarn start"
+   },
+   "dependencies": {
+     "react": "16.8.3",
+-- 
+2.18.0
+

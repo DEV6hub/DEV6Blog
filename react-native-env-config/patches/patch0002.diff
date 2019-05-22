@@ -1,0 +1,32 @@
+From 32c848d1a44fa4237bcdec040efccfa03797b7c7 Mon Sep 17 00:00:00 2001
+From: Rod Nolan <rodn@dev6.com>
+Date: Wed, 22 May 2019 10:18:35 -0400
+Subject: [PATCH] add scripts to copy the desired configuration into the
+ project before compiling it
+
+---
+ package.json | 8 +++++++-
+ 1 file changed, 7 insertions(+), 1 deletion(-)
+
+diff --git a/package.json b/package.json
+index 332f0fb..697afff 100644
+--- a/package.json
++++ b/package.json
+@@ -4,7 +4,13 @@
+   "private": true,
+   "scripts": {
+     "start": "node node_modules/react-native/local-cli/cli.js start",
+-    "test": "jest"
++    "test": "jest",
++    "prep-dev": "echo \"Applying configuration values for the development environment\" && cp .env.dev.js config/env.js",
++    "prep-stage": "echo \"Applying configuration values for the staging environment\" && cp .env.stage.js config/env.js",
++    "prep-prod": "echo \"Applying configuration values for the production environment\" && cp .env.prod.js config/env.js",
++    "test-dev": "yarn prep-dev && yarn start",
++    "test-stage": "yarn prep-stage && yarn start",
++    "test-prod": "yarn prep-prod && yarn start"
+   },
+   "dependencies": {
+     "react": "16.8.3",
+-- 
+2.18.0
+

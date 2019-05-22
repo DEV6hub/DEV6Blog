@@ -1,0 +1,24 @@
+From 9b7b769d51cee2079d603bcc6f2d83e1e28a451e Mon Sep 17 00:00:00 2001
+From: Rod Nolan <rodn@dev6.com>
+Date: Wed, 22 May 2019 10:19:38 -0400
+Subject: [PATCH] prevent generated configuration from being committed into the
+ repo
+
+---
+ .gitignore | 3 +++
+ 1 file changed, 3 insertions(+)
+
+diff --git a/.gitignore b/.gitignore
+index 0b9c303..1062392 100644
+--- a/.gitignore
++++ b/.gitignore
+@@ -55,3 +55,6 @@ buck-out/
+ # Bundle artifact
+ *.jsbundle
+ 
++
++# generated config files
++config/
+-- 
+2.18.0
+
